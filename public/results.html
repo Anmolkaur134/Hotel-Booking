@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vacation Planning</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script src=
+    "https://code.jquery.com/jquery-3.5.1.js">
+
+
+        </script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">Vacation Planning</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="about.html" class="nav-link">Login</a></li>
+	          <li class="nav-item"><a href="bookings.html" class="nav-link">My Bookings</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	</nav>
+    <!-- END nav -->
+
+    <div class="hero-wrap" style="background-image: url('images/banner.jpg'); background-position: top; height: 120px;">
+    </div>
+
+	<section class="ftco-section">
+
+		<!-- sidebar -->
+		<div class="container">
+			<div class="ftco-animate">
+				<div class="sidebar-wrap ftco-animate">
+					<form action="#">
+						<div class="fields">
+							<div class="form-group">
+								<input type="text" class="form-control" id="place" placeholder="Destination, City">
+							</div>
+							<div class="form-group">
+								<div class="select-wrap one-third">
+								
+								
+								</div>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control checkin_date" id="checkin" placeholder="Date from">
+							</div>
+							<div class="form-group">
+								<input type="text"  class="form-control checkout_date" id="checkout" placeholder="Date to">
+							</div>
+							<div class="form-group">
+								<input type="button" value="Search" id="search" class="form-control btn btn-primary">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div><!-- END-->
+		</div>
+
+		<!-- results -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row" id="here">
+
+					</div>
+	
+					<!-- pagination -->
+				
+
+				</div> <!-- .col-md-8 -->
+			</div>
+		</div>
+	  </section> <!-- .section -->
+		
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+
+
+  <script type="text/javascript">
+    document.getElementById("search").onclick = function () {
+
+		var place = document.getElementById('place').value;
+		var checkin = document.getElementById('checkin').value;
+		var checkout = document.getElementById('checkout').value;
+		if(place && checkin && checkout) {
+		var date1 = new Date(`${checkin}`);
+var date2 = new Date(`${checkout}`);
+  
+// To calculate the time difference of two dates
+var Difference_In_Time = date2.getTime() - date1.getTime();
+  
+// To calculate the no. of days between two dates
+var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+        location.href = `results.html?place=${place}&days=${Difference_In_Days}`;}
+		else{
+			alert("Please enter all values in search box.")
+		}
+    };
+  </script>
+
+
+  <script>
+	  
+	  $(document).ready(function () {
+
+
+		const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+    let count = 1;
+		$.getJSON(`/gethotels?place=${params.place}`,
+				function (data) {
+
+
+
+					
+			$.each(data, function (key, value) {
+
+document.getElementById('here').innerHTML += `<div class="col-sm col-md-6 col-lg-4 " >
+<div class="destination">
+								<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${value.url});">
+									<div class="icon d-flex justify-content-center align-items-center">
+										<span class="icon-link"></span>
+									</div>
+								</a>
+								<div class="text p-3">
+									<div class="d-flex">
+										<div class="one">
+											<h3><a href="#">${value.name}</a></h3>
+											<p class="rate">
+												<i class="icon-star"></i>
+												<i class="icon-star"></i>
+												<i class="icon-star"></i>
+												<i class="icon-star"></i>
+												<i class="icon-star-o"></i>
+												<span>${value.rating}</span>
+											</p>
+										</div>
+										<div class="two">
+											<span class="price per-price">$${value.rate}<br><small>/night</small></span>
+										</div>
+									</div>
+									<p>${value.description}</p>
+									<hr>
+									<p class="bottom-area d-flex">
+										<span><i class="icon-map-o"></i> ${value.location}</span> 
+										<span class="ml-auto"><a href="hotel.html?id=${value.id}&place=${params.place}&days=${params.days}">Book Now</a></span>
+									</p>
+								</div>
+							</div> </div>
+`;
+
+			});
+		});
+	});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
